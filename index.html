@@ -3854,7 +3854,7 @@ var(--font-mono);font-weight:700;color:#a78bfa;">23.16<span style="font-size:var
             const textColor = isLight ? '#475569' : '#94a3b8';
             charts.productTop = echarts.init(document.getElementById('productTopChart'));
             const products = ['80g盐焗鸡腿(新)', '33g多味鸡爪(新)', '100g盐焗鸭腿(新)', '15g手撕肉干香辣味(华版)', '多味鸭掌（散称）', '46g多味鸡爪', '30g多味翅尖', '山椒鸡爪（散称）', '30g香辣鸭掌', '多味鸡爪（散称）'];
-            const values = [np.float64(340.0), np.float64(355.1), np.float64(380.7), np.float64(425.7), np.float64(455.1), np.float64(479.3), np.float64(480.4), np.float64(589.1), np.float64(631.4), np.float64(1272.0)];
+            const values = [340.0, 355.1, 380.7, 425.7, 455.1, 479.3, 480.4, 589.1, 631.4, 1272.0];
             charts.productTop.setOption({
                 tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, backgroundColor: 'rgba(10,14,39,0.95)', textStyle: { color: '#e2e8f0' }, formatter: p => p[0].name + ': ' + p[0].value + '万' },
                 grid: { left: '3%', right: '8%', bottom: '3%', top: '5%', containLabel: true },
@@ -3951,7 +3951,7 @@ var(--font-mono);font-weight:700;color:#a78bfa;">23.16<span style="font-size:var
                 grid: { left: '3%', right: '8%', bottom: '3%', top: '5%', containLabel: true },
                 xAxis: { type: 'value', name: '万元', axisLabel: { color: textColor, fontSize: 9 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
                 yAxis: { type: 'category', data: ['苏南', '江苏散称', '粤', '鄂东南', '广西', '京津冀', '粤深商超', '山东', '湖南', '江西'], axisLabel: { color: textColor, fontSize: 9 }, axisLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } } },
-                series: [{ type: 'bar', data: [np.float64(479.2), np.float64(518.8), np.float64(567.3), np.float64(574.1), np.float64(574.8), np.float64(609.1), np.float64(663.8), np.float64(831.4), np.float64(954.4), np.float64(984.2)], itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#f59e0b'},{offset:1,color:'#ef4444'}]) }, barWidth: '55%', label: { show: true, position: 'right', formatter: '{c}万', color: textColor, fontSize: 9 } }]
+                series: [{ type: 'bar', data: [479.2, 518.8, 567.3, 574.1, 574.8, 609.1, 663.8, 831.4, 954.4, 984.2], itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#f59e0b'},{offset:1,color:'#ef4444'}]) }, barWidth: '55%', label: { show: true, position: 'right', formatter: '{c}万', color: textColor, fontSize: 9 } }]
             });
         }
         // V5.0 历史数据图表
@@ -4015,7 +4015,7 @@ var(--font-mono);font-weight:700;color:#a78bfa;">23.16<span style="font-size:var
                 grid: { left: '3%', right: '8%', bottom: '3%', top: '5%', containLabel: true },
                 xAxis: { type: 'value', name: '万元', axisLabel: { color: textColor }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
                 yAxis: { type: 'category', data: ['80g盐焗鸡腿(新)', '33g多味鸡爪(新)', '100g盐焗鸭腿(新)', '15g手撕肉干香辣味(华版)', '多味鸭掌（散称）', '46g多味鸡爪', '30g多味翅尖', '山椒鸡爪（散称）', '30g香辣鸭掌', '多味鸡爪（散称）'], axisLabel: { color: textColor, fontSize: 10 }, axisLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } } },
-                series: [{ type: 'bar', data: [np.float64(340.0), np.float64(355.1), np.float64(380.7), np.float64(425.7), np.float64(455.1), np.float64(479.3), np.float64(480.4), np.float64(589.1), np.float64(631.4), np.float64(1272.0)], itemStyle: { color: function(params){var colors=['#3b82f6','#3b82f6','#3b82f6','#3b82f6','#f59e0b','#f59e0b','#f59e0b','#ef4444','#ef4444','#ef4444'];return colors[params.dataIndex];} }, barWidth: '55%', label: { show: true, position: 'right', formatter: '{c}万', color: textColor, fontSize: 10 } }]
+                series: [{ type: 'bar', data: [340.0, 355.1, 380.7, 425.7, 455.1, 479.3, 480.4, 589.1, 631.4, 1272.0], itemStyle: { color: function(params){var colors=['#3b82f6','#3b82f6','#3b82f6','#3b82f6','#f59e0b','#f59e0b','#f59e0b','#ef4444','#ef4444','#ef4444'];return colors[params.dataIndex];} }, barWidth: '55%', label: { show: true, position: 'right', formatter: '{c}万', color: textColor, fontSize: 10 } }]
             });
         }
         function initCompetitorRadarChart() {

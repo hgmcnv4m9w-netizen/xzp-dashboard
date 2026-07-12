@@ -675,11 +675,11 @@
         </div>
         <div class="version-item">
             <span class="label">数据周期:</span>
-            <span class="value">2026年1-6月</span>
+            <span id="dataPeriod" class="value">2026年Q2（4-6月）</span>
         </div>
         <div class="version-item">
             <span class="label">数据更新:</span>
-            <span class="value">2026年1-6月 H1</span>
+            <span id="dataUpdate" class="value">2026年Q2（4-6月）</span>
         </div>
         <div class="version-item">
             <span class="label">数据状态:</span>
@@ -687,6 +687,28 @@
         </div>
         <div class="version-item" style="color: var(--text-muted);">
             <span>距下次更新: 7天</span>
+        </div>
+
+        <!-- 时间下钻选择器 -->
+        <div class="version-item" style="display:flex;align-items:center;gap:6px;">
+            <span class="label">⏱ 时间维度:</span>
+            <select id="timePeriodSelector" onchange="switchPeriod(this.value)" style="background:var(--bg-tertiary);color:var(--text-primary);border:1px solid var(--border-color);border-radius:4px;padding:2px 8px;font-size:var(--text-xs);cursor:pointer;outline:none;">
+                <option value="1月">1月</option>
+                <option value="2月">2月</option>
+                <option value="3月">3月</option>
+                <option value="4月">4月</option>
+                <option value="5月">5月</option>
+                <option value="6月">6月</option>
+                <option value="1月累计">1-1月累计</option>
+                <option value="2月累计">1-2月累计</option>
+                <option value="3月累计">1-3月累计</option>
+                <option value="4月累计">1-4月累计</option>
+                <option value="5月累计">1-5月累计</option>
+                <option value="6月累计">1-6月累计</option>
+                <option value="Q1">Q1 (1-3月)</option>
+                <option value="Q2" selected>Q2 (4-6月)</option>
+                <option value="H1">H1 (1-6月)</option>
+            </select>
         </div>
     </div>
     <!-- V5.0 数据校验状态 -->
@@ -864,8 +886,8 @@ var(--space-lg);">
                     <div style="font-size:var(--text-xs);color:var(--color-success);">↑122.4%</div>
                 </div>
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);">
-                    <div style="font-size:var(--text-sm);color:var(--text-muted);">2026 H1</div>
-                    <div style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-accent);font-weight:700;">1.425<span style="font-size:var(--text-lg);">亿</span></div>
+                    <div id="kpiRevenueLabel" style="font-size:var(--text-sm);color:var(--text-muted);">2026年Q2（4-6月）</div>
+                    <div id="kpiRevenue" style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-accent);font-weight:700;">0.677<span style="font-size:var(--text-lg);">亿</span></div>
                     <div style="font-size:var(--text-xs);color:var(--color-accent);">↑-0.5% YoY</div>
                 </div>
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);border-color:var(--color-danger);">
@@ -897,9 +919,9 @@ var(--space-lg);">
                             <div style="font-size:var(--text-xl);color:var(--color-accent);">→</div>
                             <div style="text-align:center;"><div style="font-size:var(--text-3xl);font-family:var(--font-mono);color:var(--color-warning);font-weight:700;">58.5%</div><div style="font-size:var(--text-xs);color:var(--text-muted);">2025</div></div>
                             <div style="font-size:var(--text-xl);color:var(--color-accent);">→</div>
-                            <div style="text-align:center;"><div style="font-size:var(--text-3xl);font-family:var(--font-mono);color:var(--color-danger);font-weight:700;">24.6%</div><div style="font-size:var(--text-xs);color:var(--text-muted);">2026H1</div></div>
+                            <div style="text-align:center;"><div style="font-size:var(--text-3xl);font-family:var(--font-mono);color:var(--color-danger);font-weight:700;">17.7%</div><div id="channelEvYear" style="font-size:var(--text-xs);color:var(--text-muted);">2026Q2</div></div>
                         </div>
-                        <div style="margin-top:var(--space-sm);font-size:var(--text-xs);color:var(--color-danger);">2026H1占比24.6%，渠道结构多元化</div>
+                        <div style="margin-top:var(--space-sm);font-size:var(--text-xs);color:var(--color-danger);"><span id="channelEvText">Q2零食渠道占比17.7%</span>，渠道结构多元化</div>
                     </div>
                     <div class="dupont-node" style="padding:var(--space-lg);">
                         <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-sm);">传统渠道收缩</div>
@@ -922,15 +944,15 @@ var(--space-lg);">
                 <div style="display:flex;flex-direction:column;gap:var(--space-md);">
                     <div class="dupont-node" style="padding:var(--space-md);border-color:var(--color-danger);">
                         <div style="font-size:var(--text-sm);color:var(--color-danger);font-weight:600;">P0 战略重地</div>
-                        <div style="font-size:var(--text-base);margin-top:var(--space-xs);">华东大区 · 2767.7万(19.4%)</div>
+                        <div style="font-size:var(--text-base);margin-top:var(--space-xs);"><span id="regionP0">华东大区 · 1376.0万(20.3%)</span></div>
                     </div>
                     <div class="dupont-node" style="padding:var(--space-md);border-color:var(--color-warning);">
                         <div style="font-size:var(--text-sm);color:var(--color-warning);font-weight:600;">P2 战略洼地</div>
-                        <div style="font-size:var(--text-base);margin-top:var(--space-xs);">华南大区 · 2405.5万(16.9%)</div>
+                        <div style="font-size:var(--text-base);margin-top:var(--space-xs);"><span id="regionP2">华南大区 · 1281.7万(18.9%)</span></div>
                     </div>
                     <div class="dupont-node" style="padding:var(--space-md);">
                         <div style="font-size:var(--text-sm);color:var(--text-muted);">系统TOP3</div>
-                        <div style="font-size:var(--text-sm);margin-top:var(--space-xs);">美宜佳 366.2万 | 恰货铺子 352.7万</div>
+                        <div style="font-size:var(--text-sm);margin-top:var(--space-xs);"><span id="systemTop3">美宜佳 223.6万 | 恰货铺子 174.7万</span></div>
                     </div>
                 </div>
             </div>
@@ -971,24 +993,24 @@ var(--space-lg);">
             <!-- 渠道业绩KPI卡片 -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md);margin-bottom:var(--space-lg);">
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);border-color:var(--color-success);">
-                    <div style="font-size:var(--text-sm);color:var(--text-muted);">零食渠道(2026H1)</div>
-                    <div style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-success);font-weight:700;">2554<span style="font-size:var(--text-lg);">万</span></div>
-                    <div style="font-size:var(--text-xs);color:var(--color-success);">占比24.6%</div>
+                    <div id="chSnackLabel" style="font-size:var(--text-sm);color:var(--text-muted);">零食渠道(2026Q2)</div>
+                    <div id="chSnackValue" style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-success);font-weight:700;">1200<span style="font-size:var(--text-lg);">万</span></div>
+                    <div id="chSnackPct" style="font-size:var(--text-xs);color:var(--color-success);">占比17.7%</div>
                 </div>
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);">
-                    <div style="font-size:var(--text-sm);color:var(--text-muted);">综合渠道(2026H1)</div>
-                    <div style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-primary-light);font-weight:700;">3191<span style="font-size:var(--text-lg);">万</span></div>
-                    <div style="font-size:var(--text-xs);color:var(--color-success);">占比33.1%</div>
+                    <div id="chCompositeLabel" style="font-size:var(--text-sm);color:var(--text-muted);">综合渠道(2026Q2)</div>
+                    <div id="chCompositeValue" style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-primary-light);font-weight:700;">1498<span style="font-size:var(--text-lg);">万</span></div>
+                    <div id="chCompositePct" style="font-size:var(--text-xs);color:var(--color-success);">占比22.1%</div>
                 </div>
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);">
-                    <div style="font-size:var(--text-sm);color:var(--text-muted);">配送渠道(2026H1)</div>
-                    <div style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-warning);font-weight:700;">2053<span style="font-size:var(--text-lg);">万</span></div>
-                    <div style="font-size:var(--text-xs);color:var(--color-danger);">占比16.5%</div>
+                    <div id="chDeliveryLabel" style="font-size:var(--text-sm);color:var(--text-muted);">配送渠道(2026Q2)</div>
+                    <div id="chDeliveryValue" style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-warning);font-weight:700;">924<span style="font-size:var(--text-lg);">万</span></div>
+                    <div id="chDeliveryPct" style="font-size:var(--text-xs);color:var(--color-danger);">占比13.6%</div>
                 </div>
                 <div class="dupont-node" style="text-align:center;padding:var(--space-lg);">
-                    <div style="font-size:var(--text-sm);color:var(--text-muted);">新零售+KA(2026H1)</div>
-                    <div style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-accent);font-weight:700;">486<span style="font-size:var(--text-lg);">万</span></div>
-                    <div style="font-size:var(--text-xs);color:var(--color-success);">占比3.4%</div>
+                    <div id="chNewRetailLabel" style="font-size:var(--text-sm);color:var(--text-muted);">新零售+KA(2026Q2)</div>
+                    <div id="chNewRetailValue" style="font-size:var(--text-4xl);font-family:var(--font-mono);color:var(--color-accent);font-weight:700;">608<span style="font-size:var(--text-lg);">万</span></div>
+                    <div id="chNewRetailPct" style="font-size:var(--text-xs);color:var(--color-success);">占比9.0%</div>
                 </div>
             </div>
             <!-- 渠道业绩对比图 -->
@@ -3520,7 +3542,7 @@ var(--font-mono);font-weight:700;color:#a78bfa;">23.16<span style="font-size:var
                 title: '核心销售指标',
                 modules: [
                     { icon: '📌', title: '指标定义', content: '2024年1月-2026年6月共30个月销售额趋势，含年度KPI和历史新高标记' },
-                    { icon: '📐', title: '核心数据', content: '<div class="tip-formula">2024年: 1.31亿 | 2025年: 2.91亿(+122.4%) | 2026H1: 1.425亿 | 历史新高: 3495万(2026.01)</div>' },
+                    { icon: '📐', title: '核心数据', content: '<div class="tip-formula">2024年: 1.31亿 | 2025年: 2.91亿(+122.4%) | <span id="keyDataFormula">2026Q2: 0.677亿</span> | 历史新高: 3495万(2026.01)</div>' },
                     { icon: '📊', title: '数据来源', content: '香之派销售明细数据' },
                     { icon: '⚠️', title: '口径说明', content: '<div class="tip-alert-box">价税合计 | 含直营 | 数据截至2026年6月</div>' }
                 ]
@@ -4319,6 +4341,97 @@ var(--font-mono);font-weight:700;color:#a78bfa;">23.16<span style="font-size:var
     
     window.addEventListener('load', function() { if (!XZPFilter._inited) setTimeout(initFilter, 100); });
 })();
+// ========== 时间下钻功能 ==========
+var PERIOD_DATA={"1月":{"label":"2026年1月","short":"1月","total_wan":3494.79,"total_yi":0.3495,"total_display":"3495","monthly":[3494.79,0,0,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":764.8},{"name":"西南大区","value":602.1},{"name":"华东大区","value":591.6},{"name":"华南大区","value":452.7},{"name":"华北一区","value":341.4},{"name":"西北大区","value":314.2},{"name":"华北二区","value":273.4},{"name":"东北战区","value":154.5}],"channels":{"零食渠道":626.6,"综合":1693.1,"配送":1052.0,"批发":777.5,"CVS":348.2,"KA":151.7,"流通":579.2,"零食":385.5,"新零售":68.9,"其他":309.2},"systems_top10":[{"name":"零食优选","value":86.0},{"name":"恰货铺子","value":84.7},{"name":"零食玩家","value":63.5},{"name":"生活驿站","value":49.1},{"name":"美宜佳连锁便利店","value":44.4},{"name":"东莞零食舱","value":38.3},{"name":"爱零食","value":37.4},{"name":"天虹","value":34.8},{"name":"美宜佳","value":30.2},{"name":"福泰隆系统","value":25.5}],"products_top10":[{"name":"多味鸡爪(散称)","value":334.6},{"name":"30g香辣鸭掌","value":168.0},{"name":"山椒鸡爪(散称)","value":156.8},{"name":"46g多味鸡爪","value":126.3},{"name":"30g多味翅尖","value":122.2},{"name":"100g盐焗鸭腿(新)","value":117.9},{"name":"33g多味鸡爪(新)","value":115.1},{"name":"多味鸭掌(散称)","value":113.5},{"name":"80g盐焗鸡腿(新)","value":97.1},{"name":"15g手撕肉干","value":96.9}],"provinces_top10":[{"name":"江西","value":295.5},{"name":"湖南","value":278.9},{"name":"山东","value":190.3},{"name":"江苏散称","value":154.4},{"name":"京津冀","value":143.8},{"name":"成都","value":138.7},{"name":"广西","value":132.1},{"name":"新疆","value":129.2},{"name":"鄂东南","value":122.4},{"name":"辽吉","value":113.3}]},"2月":{"label":"2026年2月","short":"2月","total_wan":1360.82,"total_yi":0.1361,"total_display":"1361","monthly":[0,1360.82,0,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":290.4},{"name":"华东大区","value":265.7},{"name":"西南大区","value":225.1},{"name":"华南大区","value":181.9},{"name":"东北战区","value":124.8},{"name":"华北一区","value":118.4},{"name":"华北二区","value":108.7},{"name":"西北大区","value":45.6}],"channels":{"零食渠道":255.9,"综合":342.0,"配送":159.6,"批发":212.2,"CVS":60.6,"KA":13.6,"流通":75.6,"零食":58.4,"新零售":19.2,"其他":163.7},"systems_top10":[{"name":"恰货铺子","value":37.5},{"name":"美宜佳连锁便利店","value":29.4},{"name":"珠三角A类超","value":25.9},{"name":"零食玩家","value":24.5},{"name":"好润佳商超系统","value":23.8},{"name":"常州御果缘","value":22.8},{"name":"零食优选","value":20.1},{"name":"福泰隆系统","value":17.2},{"name":"美宜佳","value":16.2},{"name":"爱零食","value":14.3}],"products_top10":[{"name":"30g香辣鸭掌","value":129.0},{"name":"多味鸡爪(散称)","value":128.9},{"name":"山椒鸡爪(散称)","value":52.7},{"name":"30g多味翅尖","value":52.3},{"name":"46g多味鸡爪","value":50.9},{"name":"多味鸭掌(散称)","value":45.5},{"name":"15g手撕肉干","value":40.2},{"name":"100g盐焗鸭腿(新)","value":37.9},{"name":"45g野山椒凤爪","value":35.3},{"name":"80g盐焗鸡腿(新)","value":31.8}],"provinces_top10":[{"name":"江西","value":137.8},{"name":"湖南","value":86.8},{"name":"山东","value":77.3},{"name":"辽吉","value":71.0},{"name":"成都","value":65.9},{"name":"苏南","value":63.9},{"name":"广西","value":58.7},{"name":"黑蒙东","value":53.8},{"name":"京津冀","value":53.2},{"name":"江苏散称","value":52.8}]},"3月":{"label":"2026年3月","short":"3月","total_wan":2622.27,"total_yi":0.2622,"total_display":"2622","monthly":[0,0,2622.27,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":534.4},{"name":"华中大区","value":502.9},{"name":"华南大区","value":489.2},{"name":"西南大区","value":400.0},{"name":"华北一区","value":263.5},{"name":"华北二区","value":219.7},{"name":"西北大区","value":164.2},{"name":"东北战区","value":48.5}],"channels":{"零食渠道":519.6,"综合":596.3,"配送":343.7,"批发":222.3,"CVS":131.0,"KA":83.5,"流通":178.2,"零食":144.8,"新零售":28.1,"其他":374.8},"systems_top10":[{"name":"美宜佳连锁便利店","value":68.9},{"name":"零食玩家","value":66.3},{"name":"零食优选","value":64.8},{"name":"大润发系统","value":55.9},{"name":"恰货铺子","value":55.8},{"name":"福泰隆系统","value":39.0},{"name":"浙江养馋记","value":25.5},{"name":"华东大润发","value":24.3},{"name":"美宜佳","value":15.8},{"name":"天虹","value":14.0}],"products_top10":[{"name":"多味鸡爪(散称)","value":235.1},{"name":"30g香辣鸭掌","value":121.2},{"name":"山椒鸡爪(散称)","value":116.8},{"name":"46g多味鸡爪","value":91.9},{"name":"多味鸭掌(散称)","value":91.1},{"name":"33g多味鸡爪(新)","value":81.7},{"name":"100g盐焗鸭腿(新)","value":77.1},{"name":"80g盐焗鸡腿(新)","value":74.8},{"name":"30g多味翅尖","value":73.5},{"name":"15g手撕肉干","value":68.0}],"provinces_top10":[{"name":"江西","value":190.4},{"name":"湖南","value":173.9},{"name":"粤深商超","value":157.1},{"name":"山东","value":135.4},{"name":"鄂东南","value":112.5},{"name":"粤","value":112.2},{"name":"京津冀","value":108.8},{"name":"广西","value":97.5},{"name":"浙江散称","value":95.0},{"name":"安徽","value":84.3}]},"4月":{"label":"2026年4月","short":"4月","total_wan":2456.8,"total_yi":0.2457,"total_display":"2457","monthly":[0,0,0,2456.8,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":582.6},{"name":"华南大区","value":413.5},{"name":"华中大区","value":404.6},{"name":"西南大区","value":344.6},{"name":"华北一区","value":248.5},{"name":"华北二区","value":205.3},{"name":"西北大区","value":173.5},{"name":"东北战区","value":84.2}],"channels":{"零食渠道":452.4,"综合":595.0,"配送":336.6,"批发":208.1,"CVS":112.8,"KA":55.5,"流通":186.5,"零食":124.1,"新零售":36.3,"其他":349.5},"systems_top10":[{"name":"恰货铺子","value":66.8},{"name":"零食玩家","value":56.0},{"name":"零食优选","value":49.0},{"name":"常州御果缘","value":41.9},{"name":"生活驿站","value":39.5},{"name":"美宜佳连锁便利店","value":37.0},{"name":"福泰隆系统","value":34.7},{"name":"华东大润发","value":33.3},{"name":"珠三角A类超","value":32.4},{"name":"东莞零食舱","value":29.1}],"products_top10":[{"name":"多味鸡爪(散称)","value":211.2},{"name":"山椒鸡爪(散称)","value":91.1},{"name":"30g多味翅尖","value":87.1},{"name":"46g多味鸡爪","value":84.3},{"name":"100g盐鸭腿(新)","value":79.1},{"name":"多味鸭掌(散称)","value":79.0},{"name":"80g盐焗鸡腿(新)","value":74.3},{"name":"33g多味鸡爪(新)","value":71.8},{"name":"15g手撕肉干","value":70.0},{"name":"30g香辣鸭掌","value":69.2}],"provinces_top10":[{"name":"山东","value":156.6},{"name":"湖南","value":141.8},{"name":"苏南","value":120.0},{"name":"江西","value":115.9},{"name":"鄂东南","value":110.6},{"name":"广西","value":106.9},{"name":"粤","value":101.6},{"name":"金丽衢","value":91.9},{"name":"京津冀","value":90.6},{"name":"成都","value":90.2}]},"5月":{"label":"2026年5月","short":"5月","total_wan":2143.96,"total_yi":0.2144,"total_display":"2144","monthly":[0,0,0,0,2143.96,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华南大区","value":465.8},{"name":"华中大区","value":389.8},{"name":"华东大区","value":359.2},{"name":"西南大区","value":258.6},{"name":"华北一区","value":238.3},{"name":"西北大区","value":179.6},{"name":"华北二区","value":158.4},{"name":"东北战区","value":94.4}],"channels":{"零食渠道":334.3,"综合":461.1,"配送":307.5,"批发":182.1,"CVS":184.3,"KA":58.2,"流通":151.8,"零食":118.5,"新零售":19.5,"其他":326.6},"systems_top10":[{"name":"美宜佳连锁便利店","value":133.9},{"name":"零食优选","value":64.7},{"name":"恰货铺子","value":51.6},{"name":"零食玩家","value":38.3},{"name":"大润发系统","value":29.1},{"name":"监狱","value":19.8},{"name":"珠三角A类超","value":19.3},{"name":"生活驿站","value":18.4},{"name":"美宜佳","value":17.0},{"name":"福泰隆系统","value":16.7}],"products_top10":[{"name":"多味鸡爪(散称)","value":179.3},{"name":"山椒鸡爪(散称)","value":85.4},{"name":"30g多味翅尖","value":82.2},{"name":"15g手撕肉干","value":81.3},{"name":"100g盐焗鸭腿(新)","value":68.7},{"name":"80g盐焗鸡腿(新)","value":62.0},{"name":"多味鸭掌(散称)","value":59.1},{"name":"33g多味鸡爪(新)","value":57.1},{"name":"46g多味鸡爪","value":56.2},{"name":"30g香辣鸭掌","value":51.1}],"provinces_top10":[{"name":"粤深商超","value":193.0},{"name":"湖南","value":157.6},{"name":"江西","value":123.7},{"name":"山东","value":118.4},{"name":"京津冀","value":106.2},{"name":"广西","value":87.5},{"name":"江苏散称","value":85.0},{"name":"粤","value":84.8},{"name":"鄂东南","value":75.2},{"name":"豫北","value":72.4}]},"6月":{"label":"2026年6月","short":"6月","total_wan":2171.32,"total_yi":0.2171,"total_display":"2171","monthly":[0,0,0,0,0,2171.32],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":434.2},{"name":"华南大区","value":402.4},{"name":"华中大区","value":366.8},{"name":"西南大区","value":252.2},{"name":"华北一区","value":250.5},{"name":"华北二区","value":182.9},{"name":"西北大区","value":164.8},{"name":"东北战区","value":93.5}],"channels":{"零食渠道":413.5,"综合":441.5,"配送":279.7,"批发":218.9,"CVS":129.9,"KA":67.0,"流通":160.4,"零食":132.9,"新零售":15.1,"其他":312.4},"systems_top10":[{"name":"零食玩家","value":65.0},{"name":"恰货铺子","value":56.3},{"name":"美宜佳连锁便利店","value":52.7},{"name":"零食优选","value":50.8},{"name":"大润发系统","value":32.2},{"name":"华东大润发","value":29.2},{"name":"东莞零食舱","value":28.2},{"name":"福泰隆系统","value":23.5},{"name":"浙江养馋记","value":22.1},{"name":"美宜佳","value":21.2}],"products_top10":[{"name":"多味鸡爪(散称)","value":183.0},{"name":"30g香辣鸭掌","value":92.8},{"name":"山椒鸡爪(散称)","value":86.3},{"name":"100g盐焗鸭腿","value":73.5},{"name":"46g多味鸡爪","value":69.8},{"name":"15g手撕肉干","value":69.2},{"name":"多味鸭掌(散称)","value":66.9},{"name":"33g多味鸡爪","value":63.9},{"name":"30g多味翅尖","value":63.0},{"name":"80g盐焗鸡腿","value":59.3}],"provinces_top10":[{"name":"山东","value":153.4},{"name":"江西","value":121.0},{"name":"粤深商超","value":117.4},{"name":"湖南","value":115.5},{"name":"粤","value":109.6},{"name":"京津冀","value":106.5},{"name":"鄂东南","value":104.6},{"name":"广西","value":92.1},{"name":"苏南","value":81.0},{"name":"豫北","value":77.4}]},"Q1":{"label":"2026年Q1（1-3月）","short":"Q1","total_wan":7477.88,"total_yi":0.7478,"total_display":"7478","monthly":[3494.79,1360.82,2622.27,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":1558.1},{"name":"华东大区","value":1391.7},{"name":"西南大区","value":1227.3},{"name":"华南大区","value":1123.8},{"name":"华北一区","value":723.3},{"name":"华北二区","value":601.9},{"name":"西北大区","value":524.0},{"name":"东北战区","value":327.8}],"channels":{"零食渠道":1402.1,"综合":1693.1,"配送":1052.0,"批发":777.5,"CVS":348.2,"KA":151.7,"流通":579.2,"零食":385.5,"新零售":68.9,"其他":1019.7},"systems_top10":[{"name":"恰货铺子","value":178.0},{"name":"零食优选","value":170.8},{"name":"零食玩家","value":154.3},{"name":"美宜佳连锁便利店","value":142.6},{"name":"珠三角A类超","value":70.4},{"name":"爱零食","value":68.9},{"name":"生活驿站","value":66.9},{"name":"美宜佳","value":62.2},{"name":"福泰隆系统","value":61.7},{"name":"大润发系统","value":55.9}],"products_top10":[{"name":"多味鸡爪(散称)","value":698.6},{"name":"30g香辣鸭掌","value":418.2},{"name":"山椒鸡爪(散称)","value":326.3},{"name":"46g多味鸡爪","value":269.1},{"name":"多味鸭掌(散称)","value":250.1},{"name":"30g多味翅尖","value":248.0},{"name":"100g盐焗鸭腿(新)","value":232.9},{"name":"33g多味鸡爪(新)","value":226.3},{"name":"15g手撕肉干","value":205.1},{"name":"80g盐鸡腿(新)","value":203.7}],"provinces_top10":[{"name":"江西","value":623.7},{"name":"湖南","value":539.6},{"name":"山东","value":403.0},{"name":"京津冀","value":305.9},{"name":"广西","value":288.3},{"name":"鄂东南","value":283.6},{"name":"江苏散称","value":283.0},{"name":"粤","value":271.3},{"name":"成都","value":269.9},{"name":"粤深商超","value":266.3}]},"Q2":{"label":"2026年Q2（4-6月）","short":"Q2","total_wan":6772.08,"total_yi":0.6772,"total_display":"6772","monthly":[0,0,0,2456.8,2143.96,2171.32],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":1376.0},{"name":"华南大区","value":1281.7},{"name":"华中大区","value":1161.2},{"name":"西南大区","value":855.4},{"name":"华北一区","value":737.4},{"name":"华北二区","value":546.6},{"name":"西北大区","value":517.9},{"name":"东北战区","value":272.1}],"channels":{"零食渠道":1200.2,"综合":1497.6,"配送":923.8,"批发":609.1,"CVS":427.0,"KA":180.8,"流通":498.7,"零食":375.5,"新零售":70.9,"其他":1388.4},"systems_top10":[{"name":"美宜佳连锁便利店","value":223.6},{"name":"恰货铺子","value":174.7},{"name":"零食优选","value":164.5},{"name":"零食玩家","value":159.3},{"name":"大润发系统","value":86.6},{"name":"生活驿站","value":79.3},{"name":"东莞零食舱","value":74.4},{"name":"福泰隆系统","value":71.9},{"name":"珠三角A类超","value":69.5},{"name":"浙江养馋记","value":47.6}],"products_top10":[{"name":"多味鸡爪(散称)","value":573.5},{"name":"山椒鸡爪(散称)","value":262.7},{"name":"30g多味翅尖","value":232.4},{"name":"15g手撕肉干","value":220.6},{"name":"30g香辣鸭掌","value":213.1},{"name":"46g多味鸡爪","value":210.3},{"name":"多味鸭掌(散称)","value":205.0},{"name":"100g盐焗鸭腿(新)","value":147.8},{"name":"45g野山椒凤爪","value":139.3},{"name":"80g盐焗鸡腿(新)","value":136.3}],"provinces_top10":[{"name":"山东","value":428.4},{"name":"湖南","value":414.9},{"name":"粤深商超","value":397.5},{"name":"江西","value":360.5},{"name":"京津冀","value":303.2},{"name":"粤","value":296.0},{"name":"鄂东南","value":290.5},{"name":"广西","value":286.5},{"name":"苏南","value":249.1},{"name":"江苏散称","value":235.8}]},"H1":{"label":"2026年H1（1-6月）","short":"H1","total_wan":14249.96,"total_yi":1.425,"total_display":"1.425","monthly":[3494.79,1360.82,2622.27,2456.8,2143.96,2171.32],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":2767.7},{"name":"华中大区","value":2719.3},{"name":"华南大区","value":2405.5},{"name":"西南大区","value":2082.6},{"name":"华北一区","value":1460.6},{"name":"华北二区","value":1148.4},{"name":"西北大区","value":1041.9},{"name":"东北战区","value":599.9}],"channels":{"零食渠道":2602.3,"综合":3190.7,"配送":1975.8,"批发":1386.6,"CVS":775.2,"KA":332.5,"流通":1077.9,"零食":761.0,"新零售":139.8,"其他":2007.9},"systems_top10":[{"name":"美宜佳连锁便利店","value":366.2},{"name":"恰货铺子","value":352.7},{"name":"零食优选","value":335.4},{"name":"零食玩家","value":313.6},{"name":"生活驿站","value":146.2},{"name":"大润发系统","value":143.9},{"name":"珠三角A类超","value":139.9},{"name":"东莞零食舱","value":135.3},{"name":"福泰隆系统","value":133.7},{"name":"浙江养馋记","value":47.6}],"products_top10":[{"name":"多味鸡爪(散称)","value":1272.0},{"name":"30g香辣鸭掌","value":631.4},{"name":"山椒鸡爪(散称)","value":589.1},{"name":"30g多味翅尖","value":480.4},{"name":"46g多味鸡爪","value":479.3},{"name":"多味鸭掌(散称)","value":455.1},{"name":"15g手撕肉干","value":425.7},{"name":"100g盐焗鸭腿(新)","value":380.7},{"name":"33g多味鸡爪(新)","value":355.1},{"name":"80g盐焗鸡腿(新)","value":340.0}],"provinces_top10":[{"name":"江西","value":984.2},{"name":"湖南","value":954.4},{"name":"山东","value":831.4},{"name":"粤深商超","value":663.8},{"name":"京津冀","value":609.1},{"name":"广西","value":574.8},{"name":"鄂东南","value":574.1},{"name":"粤","value":567.3},{"name":"江苏散称","value":518.8},{"name":"苏南","value":479.2}]},"1月累计":{"label":"2026年1-1月累计","short":"1-1月","total_wan":3494.79,"total_yi":0.3495,"total_display":3495,"monthly":[3494.79,0,0,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":764.8},{"name":"西南大区","value":602.1},{"name":"华东大区","value":591.6},{"name":"华南大区","value":452.7},{"name":"华北一区","value":341.4},{"name":"西北大区","value":314.2},{"name":"华北二区","value":273.4},{"name":"东北战区","value":154.5}],"channels":{"零食渠道":626.6,"综合":1693.1,"配送":1052.0,"批发":777.5,"CVS":348.2,"KA":151.7,"流通":579.2,"零食":385.5,"新零售":68.9,"其他":309.2},"systems_top10":[{"name":"零食优选","value":86.0},{"name":"恰货铺子","value":84.7},{"name":"零食玩家","value":63.5},{"name":"生活驿站","value":49.1},{"name":"美宜佳连锁便利店","value":44.4},{"name":"东莞零食舱","value":38.3},{"name":"爱零食","value":37.4},{"name":"天虹","value":34.8},{"name":"美宜佳","value":30.2},{"name":"福泰隆系统","value":25.5}],"products_top10":[{"name":"多味鸡爪(散称)","value":334.6},{"name":"30g香辣鸭掌","value":168.0},{"name":"山椒鸡爪(散称)","value":156.8},{"name":"46g多味鸡爪","value":126.3},{"name":"30g多味翅尖","value":122.2},{"name":"100g盐焗鸭腿(新)","value":117.9},{"name":"33g多味鸡爪(新)","value":115.1},{"name":"多味鸭掌(散称)","value":113.5},{"name":"80g盐焗鸡腿(新)","value":97.1},{"name":"15g手撕肉干","value":96.9}],"provinces_top10":[{"name":"江西","value":295.5},{"name":"湖南","value":278.9},{"name":"山东","value":190.3},{"name":"江苏散称","value":154.4},{"name":"京津冀","value":143.8},{"name":"成都","value":138.7},{"name":"广西","value":132.1},{"name":"新疆","value":129.2},{"name":"鄂东南","value":122.4},{"name":"辽吉","value":113.3}]},"2月累计":{"label":"2026年1-2月累计","short":"1-2月","total_wan":4855.61,"total_yi":0.4856,"total_display":4856,"monthly":[3494.79,1360.82,0,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":1055.2},{"name":"华东大区","value":857.3},{"name":"西南大区","value":827.2},{"name":"华南大区","value":634.6},{"name":"华北一区","value":459.8},{"name":"华北二区","value":382.1},{"name":"西北大区","value":359.8},{"name":"东北战区","value":279.3}],"channels":{"零食渠道":882.5,"综合":2035.1,"配送":1211.6,"批发":989.7,"CVS":408.8,"KA":165.3,"流通":654.8,"零食":443.9,"新零售":88.1,"其他":472.9},"systems_top10":[{"name":"恰货铺子","value":122.2},{"name":"零食优选","value":106.1},{"name":"零食玩家","value":88.0},{"name":"美宜佳连锁便利店","value":73.8},{"name":"爱零食","value":51.7},{"name":"生活驿站","value":49.1},{"name":"美宜佳","value":46.4},{"name":"福泰隆系统","value":42.7},{"name":"东莞零食舱","value":38.3},{"name":"天虹","value":34.8}],"products_top10":[{"name":"多味鸡爪(散称)","value":463.5},{"name":"30g香辣鸭掌","value":297.0},{"name":"山椒鸡爪(散称)","value":209.5},{"name":"46g多味鸡爪","value":177.2},{"name":"30g多味翅尖","value":174.5},{"name":"多味鸭掌(散称)","value":159.0},{"name":"100g盐焗鸭腿(新)","value":155.8},{"name":"15g手撕肉干","value":137.1},{"name":"80g盐焗鸡腿(新)","value":128.9},{"name":"33g多味鸡爪(新)","value":115.1}],"provinces_top10":[{"name":"江西","value":433.3},{"name":"湖南","value":365.7},{"name":"山东","value":267.6},{"name":"江苏散称","value":207.2},{"name":"成都","value":204.6},{"name":"京津冀","value":197.0},{"name":"广西","value":190.8},{"name":"辽吉","value":184.3},{"name":"新疆","value":129.2},{"name":"鄂东南","value":122.4}]},"3月累计":{"label":"2026年1-3月累计","short":"1-3月","total_wan":7477.88,"total_yi":0.7478,"total_display":7478,"monthly":[3494.79,1360.82,2622.27,0,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":1558.1},{"name":"华东大区","value":1391.7},{"name":"西南大区","value":1227.2},{"name":"华南大区","value":1123.8},{"name":"华北一区","value":723.3},{"name":"华北二区","value":601.8},{"name":"西北大区","value":524.0},{"name":"东北战区","value":327.8}],"channels":{"零食渠道":1402.1,"综合":2631.4,"配送":1555.3,"批发":1212.0,"CVS":539.8,"KA":248.8,"流通":833.0,"零食":588.7,"新零售":116.2,"其他":847.7},"systems_top10":[{"name":"恰货铺子","value":178.0},{"name":"零食优选","value":170.9},{"name":"零食玩家","value":154.3},{"name":"美宜佳连锁便利店","value":142.7},{"name":"福泰隆系统","value":81.7},{"name":"美宜佳","value":62.2},{"name":"大润发系统","value":55.9},{"name":"爱零食","value":51.7},{"name":"生活驿站","value":49.1},{"name":"天虹","value":48.8}],"products_top10":[{"name":"多味鸡爪(散称)","value":698.6},{"name":"30g香辣鸭掌","value":418.2},{"name":"山椒鸡爪(散称)","value":326.3},{"name":"46g多味鸡爪","value":269.1},{"name":"多味鸭掌(散称)","value":250.1},{"name":"30g多味翅尖","value":248.0},{"name":"100g盐焗鸭腿(新)","value":232.9},{"name":"15g手撕肉干","value":205.1},{"name":"80g盐焗鸡腿(新)","value":203.7},{"name":"33g多味鸡爪(新)","value":196.8}],"provinces_top10":[{"name":"江西","value":623.7},{"name":"湖南","value":539.6},{"name":"山东","value":403.0},{"name":"京津冀","value":305.8},{"name":"广西","value":288.3},{"name":"鄂东南","value":234.9},{"name":"江苏散称","value":207.2},{"name":"成都","value":204.6},{"name":"辽吉","value":184.3},{"name":"粤深商超","value":157.1}]},"4月累计":{"label":"2026年1-4月累计","short":"1-4月","total_wan":9934.68,"total_yi":0.9935,"total_display":9935,"monthly":[3494.79,1360.82,2622.27,2456.8,0,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":1974.3},{"name":"华中大区","value":1962.7},{"name":"西南大区","value":1571.8},{"name":"华南大区","value":1537.3},{"name":"华北一区","value":971.8},{"name":"华北二区","value":807.1},{"name":"西北大区","value":697.5},{"name":"东北战区","value":412.0}],"channels":{"零食渠道":1854.5,"综合":3226.4,"配送":1891.9,"批发":1420.1,"CVS":652.6,"KA":304.3,"流通":1019.5,"零食":712.8,"新零售":152.5,"其他":1197.2},"systems_top10":[{"name":"恰货铺子","value":244.8},{"name":"零食优选","value":219.9},{"name":"零食玩家","value":210.3},{"name":"美宜佳连锁便利店","value":179.7},{"name":"福泰隆系统","value":116.4},{"name":"生活驿站","value":88.6},{"name":"东莞零食舱","value":67.4},{"name":"常州御果缘","value":64.7},{"name":"美宜佳","value":62.2},{"name":"珠三角A类超","value":58.3}],"products_top10":[{"name":"多味鸡爪(散称)","value":909.8},{"name":"30g香辣鸭掌","value":487.4},{"name":"山椒鸡爪(散称)","value":417.4},{"name":"46g多味鸡爪","value":353.4},{"name":"30g多味翅尖","value":335.1},{"name":"多味鸭掌(散称)","value":329.1},{"name":"80g盐焗鸡腿(新)","value":278.0},{"name":"15g手撕肉干","value":275.1},{"name":"33g多味鸡爪(新)","value":268.6},{"name":"100g盐焗鸭腿(新)","value":232.9}],"provinces_top10":[{"name":"江西","value":739.6},{"name":"湖南","value":681.4},{"name":"山东","value":559.6},{"name":"京津冀","value":396.4},{"name":"广西","value":395.2},{"name":"鄂东南","value":345.5},{"name":"成都","value":294.8},{"name":"粤","value":213.8},{"name":"江苏散称","value":207.2},{"name":"辽吉","value":184.3}]},"5月累计":{"label":"2026年1-5月累计","short":"1-5月","total_wan":12078.64,"total_yi":1.2079,"total_display":12079,"monthly":[3494.79,1360.82,2622.27,2456.8,2143.96,0],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华中大区","value":2352.5},{"name":"华东大区","value":2333.5},{"name":"华南大区","value":2003.1},{"name":"西南大区","value":1830.4},{"name":"华北一区","value":1210.1},{"name":"华北二区","value":965.5},{"name":"西北大区","value":877.1},{"name":"东北战区","value":506.4}],"channels":{"零食渠道":2188.8,"综合":3687.5,"配送":2199.4,"批发":1602.2,"CVS":836.9,"KA":362.5,"流通":1171.3,"零食":831.3,"新零售":172.0,"其他":1523.8},"systems_top10":[{"name":"美宜佳连锁便利店","value":313.6},{"name":"恰货铺子","value":296.4},{"name":"零食优选","value":284.6},{"name":"零食玩家","value":248.6},{"name":"福泰隆系统","value":133.1},{"name":"生活驿站","value":107.0},{"name":"大润发系统","value":85.0},{"name":"美宜佳","value":79.2},{"name":"珠三角A类超","value":77.6},{"name":"东莞零食舱","value":67.4}],"products_top10":[{"name":"多味鸡爪(散称)","value":1089.1},{"name":"30g香辣鸭掌","value":538.5},{"name":"山椒鸡爪(散称)","value":502.8},{"name":"30g多味翅尖","value":417.3},{"name":"46g多味鸡爪","value":409.6},{"name":"多味鸭掌(散称)","value":388.2},{"name":"15g手撕肉干","value":356.4},{"name":"80g盐焗鸡腿(新)","value":340.0},{"name":"33g多味鸡爪(新)","value":325.7},{"name":"100g盐焗鸭腿(新)","value":301.6}],"provinces_top10":[{"name":"江西","value":863.3},{"name":"湖南","value":839.0},{"name":"山东","value":678.0},{"name":"京津冀","value":502.6},{"name":"广西","value":482.7},{"name":"鄂东南","value":420.7},{"name":"粤深商超","value":350.1},{"name":"粤","value":298.6},{"name":"成都","value":294.8},{"name":"江苏散称","value":292.2}]},"6月累计":{"label":"2026年1-6月累计","short":"1-6月","total_wan":14249.96,"total_yi":1.425,"total_display":14250,"monthly":[3494.79,1360.82,2622.27,2456.8,2143.96,2171.32],"monthly_labels":["1月","2月","3月","4月","5月","6月"],"regions":[{"name":"华东大区","value":2767.7},{"name":"华中大区","value":2719.3},{"name":"华南大区","value":2405.5},{"name":"西南大区","value":2082.6},{"name":"华北一区","value":1460.6},{"name":"华北二区","value":1148.4},{"name":"西北大区","value":1041.9},{"name":"东北战区","value":599.9}],"channels":{"零食渠道":2602.3,"综合":4129.0,"配送":2479.1,"批发":1821.1,"CVS":966.8,"KA":429.5,"流通":1331.7,"零食":964.2,"新零售":187.1,"其他":1836.2},"systems_top10":[{"name":"美宜佳连锁便利店","value":366.3},{"name":"恰货铺子","value":352.7},{"name":"零食优选","value":335.4},{"name":"零食玩家","value":313.6},{"name":"福泰隆系统","value":156.6},{"name":"大润发系统","value":117.2},{"name":"生活驿站","value":107.0},{"name":"美宜佳","value":100.4},{"name":"东莞零食舱","value":95.6},{"name":"华东大润发","value":86.8}],"products_top10":[{"name":"多味鸡爪(散称)","value":1272.1},{"name":"30g香辣鸭掌","value":631.3},{"name":"山椒鸡爪(散称)","value":589.1},{"name":"30g多味翅尖","value":480.3},{"name":"46g多味鸡爪","value":479.4},{"name":"多味鸭掌(散称)","value":455.1},{"name":"15g手撕肉干","value":425.6},{"name":"80g盐焗鸡腿(新)","value":340.0},{"name":"33g多味鸡爪(新)","value":325.7},{"name":"100g盐焗鸭腿(新)","value":301.6}],"provinces_top10":[{"name":"江西","value":984.3},{"name":"湖南","value":954.5},{"name":"山东","value":831.4},{"name":"京津冀","value":609.1},{"name":"广西","value":574.8},{"name":"鄂东南","value":525.3},{"name":"粤深商超","value":467.5},{"name":"粤","value":408.2},{"name":"成都","value":294.8},{"name":"江苏散称","value":292.2}]}};
+
+function switchPeriod(period) {
+    var d = PERIOD_DATA[period];
+    if (!d) return;
+    
+    // Update labels
+    var el;
+    el = document.getElementById('dataPeriod'); if (el) el.textContent = d.label;
+    el = document.getElementById('dataUpdate'); if (el) el.textContent = d.label;
+    el = document.getElementById('kpiRevenueLabel'); if (el) el.textContent = d.label;
+    
+    // Update revenue
+    el = document.getElementById('kpiRevenue');
+    if (el) {
+        if (d.total_yi >= 1) {
+            el.innerHTML = d.total_yi.toFixed(3) + '<span style="font-size:var(--text-lg);">亿</span>';
+        } else {
+            el.innerHTML = Math.round(d.total_wan) + '<span style="font-size:var(--text-lg);">万</span>';
+        }
+    }
+    
+    // Update region KPIs
+    var totalWan = d.total_wan;
+    if (d.regions.length >= 1) {
+        var r0 = d.regions[0];
+        var pct0 = (r0.value / totalWan * 100).toFixed(1);
+        el = document.getElementById('regionP0'); if (el) el.textContent = r0.name + ' · ' + r0.value.toFixed(1) + '万(' + pct0 + '%)';
+    }
+    if (d.regions.length >= 3) {
+        var r2 = d.regions[2];
+        var pct2 = (r2.value / totalWan * 100).toFixed(1);
+        el = document.getElementById('regionP2'); if (el) el.textContent = r2.name + ' · ' + r2.value.toFixed(1) + '万(' + pct2 + '%)';
+    }
+    
+    // Update system TOP3
+    if (d.systems_top10.length >= 2) {
+        el = document.getElementById('systemTop3');
+        if (el) el.textContent = d.systems_top10[0].name + ' ' + d.systems_top10[0].value.toFixed(1) + '万 | ' + d.systems_top10[1].name + ' ' + d.systems_top10[1].value.toFixed(1) + '万';
+    }
+    
+    // Update channel KPIs
+    var ch = d.channels;
+    var snackTotal = (ch['零食渠道'] || 0) + (ch['零食'] || 0);
+    var compositeTotal = ch['综合'] || 0;
+    var deliveryTotal = ch['配送'] || 0;
+    var newRetailTotal = (ch['新零售'] || 0) + (ch['KA'] || 0) + (ch['CVS'] || 0);
+    
+    el = document.getElementById('chSnackLabel'); if (el) el.textContent = '零食渠道(' + d.label.replace('2026年','2026').replace('（','').replace('）','') + ')';
+    el = document.getElementById('chSnackValue'); if (el) el.innerHTML = Math.round(snackTotal) + '<span style="font-size:var(--text-lg);">万</span>';
+    el = document.getElementById('chSnackPct'); if (el) el.textContent = '占比' + (snackTotal/totalWan*100).toFixed(1) + '%';
+    
+    el = document.getElementById('chCompositeLabel'); if (el) el.textContent = '综合渠道(' + d.label.replace('2026年','2026').replace('（','').replace('）','') + ')';
+    el = document.getElementById('chCompositeValue'); if (el) el.innerHTML = Math.round(compositeTotal) + '<span style="font-size:var(--text-lg);">万</span>';
+    el = document.getElementById('chCompositePct'); if (el) el.textContent = '占比' + (compositeTotal/totalWan*100).toFixed(1) + '%';
+    
+    el = document.getElementById('chDeliveryLabel'); if (el) el.textContent = '配送渠道(' + d.label.replace('2026年','2026').replace('（','').replace('）','') + ')';
+    el = document.getElementById('chDeliveryValue'); if (el) el.innerHTML = Math.round(deliveryTotal) + '<span style="font-size:var(--text-lg);">万</span>';
+    el = document.getElementById('chDeliveryPct'); if (el) el.textContent = '占比' + (deliveryTotal/totalWan*100).toFixed(1) + '%';
+    
+    el = document.getElementById('chNewRetailLabel'); if (el) el.textContent = '新零售+KA(' + d.label.replace('2026年','2026').replace('（','').replace('）','') + ')';
+    el = document.getElementById('chNewRetailValue'); if (el) el.innerHTML = Math.round(newRetailTotal) + '<span style="font-size:var(--text-lg);">万</span>';
+    el = document.getElementById('chNewRetailPct'); if (el) el.textContent = '占比' + (newRetailTotal/totalWan*100).toFixed(1) + '%';
+    
+    // Update channel evolution text
+    var snackPct = (snackTotal / totalWan * 100).toFixed(1);
+    el = document.getElementById('channelEvText'); if (el) el.textContent = d.short + '零食渠道占比' + snackPct + '%';
+    el = document.getElementById('channelEvYear'); if (el) el.textContent = '2026' + d.short;
+    
+    // Update key data formula
+    el = document.getElementById('keyDataFormula');
+    if (el) {
+        if (d.total_yi >= 1) {
+            el.textContent = d.label.replace('2026年','') + ': ' + d.total_yi.toFixed(3) + '亿';
+        } else {
+            el.textContent = d.label.replace('2026年','') + ': ' + Math.round(d.total_wan) + '万';
+        }
+    }
+    
+    // Update chart subtitle
+    var chartSubtitle = document.getElementById('salesTrendSubtitle');
+    if (chartSubtitle) chartSubtitle.textContent = d.label;
+    
+    xzpLog('Period switched to: ' + period + ' | Revenue: ' + d.total_wan + '万');
+}
+
+// Init with Q2 on load
+setTimeout(function() { switchPeriod('Q2'); }, 500);
+// ========== 时间下钻功能结束 ==========
+
 </script>
 </body>
 </html>
